@@ -7,6 +7,10 @@ const app = express()
 // connect db
 connectDB()
 
+// init middlewares
+// allow access req.body in json format
+app.use(express.json({ extended: false }))
+
 // routes
 app.get('/', (req, res) => res.send('api running..'))
 app.use('/api/users', require('./routes/api/users'))

@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://jinyongnan:jinyongnan@cluster0-xk5om.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority"
+    "mongoURI": "mongodb+srv://jinyongnan:jinyongnan@cluster0-xk5om.gcp.mongodb.net/mern?retryWrites=true&w=majority",
+    "jwtToken": "jwtTokenString"
 }
