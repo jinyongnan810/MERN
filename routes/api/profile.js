@@ -5,6 +5,7 @@ const normalize = require('normalize-url');
 const auth = require('../../middleware/auth')
 const Profile = require('../../models/Profile')
 const User = require('../../models/User')
+const Post = require('../../models/Post')
 const { check, validationResult } = require('express-validator')
 const router = express.Router()
 
@@ -29,8 +30,8 @@ router.get('/me', auth, async (req, res) => {
 // @access Private
 router.post('/', [auth,
     [
-        check('status', 'Status is required.').notEmpty(),
-        check('skills', 'Skills is required.').notEmpty()
+        check('status', 'Status is required..').not().isEmpty(),
+        check('skills', 'Skills is required..').not().isEmpty()
     ]], async (req, res) => {
         const errors = validationResult(req)
         if (!errors.isEmpty()) {
@@ -130,6 +131,8 @@ router.get('/user/:user_id', async (req, res) => {
 // @access Private
 router.delete('/', auth, async (req, res) => {
     try {
+        // delete user
+        await Post.deleteMany({ user: req.user.id })
         // delete profile
         await Profile.findOneAndRemove({ user: req.user.id })
         // delete user

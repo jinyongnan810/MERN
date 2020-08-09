@@ -18,6 +18,7 @@ export default (state = initialState, action) => {
         case types.LOGIN_ERROR:
         case types.REGISTER_FAIL:
         case types.LOGOUT:
+        case types.USER_DELETED:
             localStorage.removeItem('token')
             return { ...state, token: null, user: null, isAuthenticated: false, loading: false }
         default:

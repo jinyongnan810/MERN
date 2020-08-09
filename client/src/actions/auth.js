@@ -71,7 +71,30 @@ export const login = ({ email, password }) => async (dispatch) => {
 // logou
 export const logout = () => (dispatch) => {
     dispatch({
+        type: types.CLEAR_PROFILE
+    })
+    dispatch({
         type: types.LOGOUT
     })
 }
 
+// remove user
+export const deleteUser = () => async dispatch => {
+    try {
+        await axios.delete(`/api/profile`)
+
+        dispatch({
+            type: types.CLEAR_PROFILE
+        })
+        dispatch({
+            type: types.USER_DELETED
+        })
+
+        dispatch(setAlert("User is removed."))
+    } catch (error) {
+        dispatch({
+            type: types.PROFILE_ERROR,
+            payload: { 'msg': error.response.statusText, 'status': error.response.status }
+        })
+    }
+}
