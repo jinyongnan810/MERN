@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://jinyongnan:jinyongnan@cluster0-xk5om.gcp.mongodb.net/mern?retryWrites=true&w=majority",
+    "jwtToken": "jwtTokenString",
+    "githubId": "3f02515ea0f815048e06",
+    "githubSecret": "cbda41d6db7b67a6a0c6d9aa8314bc9a90b29646"
+}
